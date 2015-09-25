@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UnderDaSeaFight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,217 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="uA4-ZU-BCy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEZ-km-Y4V">
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="163"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="163" id="DVO-VY-GtN"/>
+                                    <constraint firstAttribute="width" constant="145" id="pcb-VN-eZU"/>
+                                </constraints>
+                                <state key="normal" image="leftcorner"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8a-je-q1x">
+                                <rect key="frame" x="455" y="0.0" width="145" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="SF5-pX-gAP"/>
+                                    <constraint firstAttribute="height" constant="162" id="feW-SY-4D3"/>
+                                </constraints>
+                                <state key="normal" image="rightcorner"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crab_left" translatesAutoresizingMaskIntoConstraints="NO" id="UtH-xg-sxt">
+                                <rect key="frame" x="20" y="303" width="232" height="242"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="Jia-Me-oYO"/>
+                                    <constraint firstAttribute="height" constant="242" id="lGK-1y-wjV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seahorse_right" translatesAutoresizingMaskIntoConstraints="NO" id="UP3-Dl-ekF">
+                                <rect key="frame" x="368" y="303" width="232" height="242"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="EQd-HE-RRG"/>
+                                    <constraint firstAttribute="height" constant="242" id="XJF-v9-02Z"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rocks" translatesAutoresizingMaskIntoConstraints="NO" id="LUE-Jm-F4M">
+                                <rect key="frame" x="0.0" y="520" width="600" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="0hf-V6-yFa"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="labelbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Uue-Qy-D81">
+                                <rect key="frame" x="54" y="543" width="493" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="0I3-CI-ki6"/>
+                                    <constraint firstAttribute="width" constant="493" id="85V-5j-06p"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kimbo32fr wins!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-nv-tCa">
+                                <rect key="frame" x="0.0" y="173" width="600" height="55"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="42"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="firstscreenbg" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-A1-gCK">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1109"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6yK-eV-Wpb">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sMJ-pC-7Qc">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="290"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oo5-fE-rLc">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="97"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am9-yc-X28">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="97"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="42"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mnp-h8-Dcd">
+                                                <rect key="frame" x="0.0" y="97" width="600" height="96"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opb-49-ovg">
+                                                        <rect key="frame" x="133" y="0.0" width="334" height="96"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="39"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="opb-49-ovg" secondAttribute="width" multiplier="1.8" id="x1Q-IM-tBZ"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="76E-rZ-F5D">
+                                                <rect key="frame" x="0.0" y="193" width="600" height="97"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pick your creature:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smc-Jj-WLy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="97"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="42"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="oo5-fE-rLc" firstAttribute="centerX" secondItem="sMJ-pC-7Qc" secondAttribute="centerX" id="13S-F0-hH6"/>
+                                            <constraint firstItem="76E-rZ-F5D" firstAttribute="centerX" secondItem="sMJ-pC-7Qc" secondAttribute="centerX" id="BGV-22-8Yn"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mnp-h8-Dcd" secondAttribute="trailing" id="ibW-Pu-RXX"/>
+                                            <constraint firstItem="Mnp-h8-Dcd" firstAttribute="leading" secondItem="sMJ-pC-7Qc" secondAttribute="leading" id="jGd-qy-WR0"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="11W-ce-ABe">
+                                        <rect key="frame" x="0.0" y="290" width="600" height="290"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-iN-dnM">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="290"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y6-9S-1Xf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="290"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="2y6-9S-1Xf" secondAttribute="height" multiplier="30:29" id="0sZ-Kw-BjA"/>
+                                                            <constraint firstAttribute="width" secondItem="2y6-9S-1Xf" secondAttribute="height" multiplier="303:334" id="8Q8-Ct-bXY"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button" image="seahorse_left"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="8Q8-Ct-bXY"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="playerChoseSeahorse:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fKN-0P-QOZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZqD-jl-1WT">
+                                                <rect key="frame" x="300" y="0.0" width="300" height="290"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MvS-JF-KKJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="290"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="MvS-JF-KKJ" secondAttribute="height" multiplier="30:29" id="i4C-vM-iug"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button" image="crab_left"/>
+                                                        <connections>
+                                                            <action selector="playerChoseCrab:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uvl-Lz-jo8"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="11W-ce-ABe" secondAttribute="trailing" id="8iB-U3-LaI"/>
+                                    <constraint firstItem="sMJ-pC-7Qc" firstAttribute="centerX" secondItem="6yK-eV-Wpb" secondAttribute="centerX" id="MGd-00-69B"/>
+                                    <constraint firstAttribute="trailing" secondItem="sMJ-pC-7Qc" secondAttribute="trailing" id="TMD-bC-co0"/>
+                                    <constraint firstItem="sMJ-pC-7Qc" firstAttribute="leading" secondItem="6yK-eV-Wpb" secondAttribute="leading" id="nfe-Cz-YQy"/>
+                                    <constraint firstItem="11W-ce-ABe" firstAttribute="leading" secondItem="6yK-eV-Wpb" secondAttribute="leading" id="vMx-MZ-gkE"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LUE-Jm-F4M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5qg-dA-Dhv"/>
+                            <constraint firstItem="uA4-ZU-BCy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7ph-5b-Ydt"/>
+                            <constraint firstAttribute="trailing" secondItem="UP3-Dl-ekF" secondAttribute="trailing" id="7t5-MO-Z1A"/>
+                            <constraint firstItem="Uue-Qy-D81" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C9j-E1-d0f"/>
+                            <constraint firstItem="U8a-je-q1x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CgN-Wo-a5h"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LUE-Jm-F4M" secondAttribute="bottom" id="IL4-B7-gKB"/>
+                            <constraint firstAttribute="trailing" secondItem="uA4-ZU-BCy" secondAttribute="trailing" id="O7t-gG-dFJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LUE-Jm-F4M" secondAttribute="bottom" id="QRy-3h-f5h"/>
+                            <constraint firstItem="uA4-ZU-BCy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="U75-nC-9J5"/>
+                            <constraint firstItem="6yK-eV-Wpb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Un5-de-pek"/>
+                            <constraint firstItem="LUE-Jm-F4M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WlJ-CL-wlo"/>
+                            <constraint firstItem="VEZ-km-Y4V" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WrT-AP-PsF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Uue-Qy-D81" secondAttribute="bottom" constant="18" id="YBB-ME-iXa"/>
+                            <constraint firstAttribute="centerY" secondItem="Ie4-nv-tCa" secondAttribute="centerY" constant="100" id="a5P-8Z-OgN"/>
+                            <constraint firstItem="UtH-xg-sxt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="c4x-QE-xyM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UtH-xg-sxt" secondAttribute="bottom" constant="55" id="dK4-Vs-L6g"/>
+                            <constraint firstItem="6yK-eV-Wpb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gQ9-0w-Z81"/>
+                            <constraint firstAttribute="bottom" secondItem="6yK-eV-Wpb" secondAttribute="bottom" id="ghG-4d-wZQ"/>
+                            <constraint firstItem="Ie4-nv-tCa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jUN-Ss-Sif"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UP3-Dl-ekF" secondAttribute="bottom" constant="55" id="jUY-lJ-9T7"/>
+                            <constraint firstItem="VEZ-km-Y4V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jYj-F8-BXC"/>
+                            <constraint firstItem="Ie4-nv-tCa" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="khT-HB-ibW"/>
+                            <constraint firstAttribute="trailing" secondItem="LUE-Jm-F4M" secondAttribute="trailing" id="mOj-1F-zc1"/>
+                            <constraint firstAttribute="trailing" secondItem="U8a-je-q1x" secondAttribute="trailing" id="n0D-0j-0Mz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uA4-ZU-BCy" secondAttribute="bottom" id="u9Z-o4-PA0"/>
+                            <constraint firstAttribute="trailing" secondItem="6yK-eV-Wpb" secondAttribute="trailing" id="wy2-Ee-D7H"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5qg-dA-Dhv"/>
+                                <exclude reference="QRy-3h-f5h"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="crabOptionImage" destination="MvS-JF-KKJ" id="gI3-gS-bIc"/>
+                        <outlet property="playerInputBackground" destination="Ynp-A1-gCK" id="Ehm-BA-bSz"/>
+                        <outlet property="playerInputStackView" destination="6yK-eV-Wpb" id="TRf-BI-UfD"/>
+                        <outlet property="playerInputTextField" destination="opb-49-ovg" id="BI9-ho-ZI4"/>
+                        <outlet property="seahorseOptionImage" destination="2y6-9S-1Xf" id="e3e-Bn-wPM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="2208" height="1242"/>
+        <image name="crab_left" width="697" height="826"/>
+        <image name="firstscreenbg" width="1920" height="1109"/>
+        <image name="labelbackground" width="1465" height="116"/>
+        <image name="leftcorner" width="415" height="464"/>
+        <image name="rightcorner" width="415" height="464"/>
+        <image name="rocks" width="2732" height="300"/>
+        <image name="seahorse_left" width="697" height="826"/>
+        <image name="seahorse_right" width="697" height="826"/>
+    </resources>
 </document>

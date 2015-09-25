@@ -10,14 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //player input option screen
+    @IBOutlet weak var playerInputBackground: UIImageView!
+    @IBOutlet weak var playerInputStackView: UIStackView!
+    @IBOutlet weak var playerInputTextField: UITextField!
+    @IBOutlet weak var seahorseOptionImage: UIButton!
+    @IBOutlet weak var crabOptionImage: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //load GameController
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func playerChoseSeahorse(sender: AnyObject) {
+        //game.playerchoseseahorse(this)
+    }
+    @IBAction func playerChoseCrab(sender: AnyObject) {
+        //game.playerchosecrab(this)
     }
 
 
