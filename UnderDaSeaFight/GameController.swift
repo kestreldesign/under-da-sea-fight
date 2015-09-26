@@ -9,9 +9,8 @@
 import Foundation
 
 class GameController {
-    //leftplayer
-    //rightplayer
-    //gamestate: leftplayer, rightplayer, game, endgame
+    private var leftPlayer: Player?
+    private var rightPlayer: Player?
     enum GameState {
         case LEFTPLAYER
         case RIGHTPLAYER
@@ -25,48 +24,61 @@ class GameController {
     var game = GameState.LEFTPLAYER
     var screen: ViewController!
     
-    init(screen: ViewController) { //pass all the UI elements into the game at init?
+    init(screen: ViewController) {
         self.screen = screen
         screen.showPlayer1Screen()
     }
     
     func playerChoseACritter(var nameOfPlayer: String?, critter: CritterType){
-        if nameOfPlayer == nil {
-            nameOfPlayer = "Player1"
-        }
         if game == .LEFTPLAYER {
+            if nameOfPlayer == "" {
+                nameOfPlayer = "Player 1"
+            }
             print("left player, called '\(nameOfPlayer!)' chose the \(critter)")
             //store this info into leftplayer
+            leftPlayer = Player(name: nameOfPlayer!, type: critter)
             game = .RIGHTPLAYER
             screen.showPlayer2Screen()
         } else if game == .RIGHTPLAYER {
+            if nameOfPlayer == "" {
+                nameOfPlayer = "Player 2"
+            }
             print("right player, called '\(nameOfPlayer!)' chose the \(critter)")
-            //store this info into right player
+            rightPlayer = Player(name: nameOfPlayer!, type: critter)
             game = .GAME
-            //screen.showMainGameScreen()
+            screen.showMainGameScreen(leftPlayer!.type, rightCritter: rightPlayer!.type)
         }
     }
     
     func leftPlayerAttacked(){
-        //attempt attack from left player to right player
-        //update all numbers and display text
-        //if right player dies, end game
-        //disable leftplayer attack button for x seconds
+        print("left player attacked")
+        let attackAmount = rightPlayer!.getHitByRandomPower()
+        screen.print("\(leftPlayer!.name) attacked, \(rightPlayer!.name) lost \(attackAmount) hp!")
+        screen.showRightPlayerHp(rightPlayer!.hp)
+        if !rightPlayer!.isAlive {
+            game = .ENDGAME
+            screen.hideRightPlayer()
+            screen.shout("\(leftPlayer!.name) wins!!!")
+        }
+        screen.disableLeftPlayer(3)
     }
     
     func rightPlayerAttacked(){
-        //attempt attack from right player to left player
-        //update all numbers and display text
-        //if left player dies, end game
-        //disable rightplayer attack button for x seconds
+        print("right player attacked")
+        let attackAmount = leftPlayer!.getHitByRandomPower()
+        screen.print("\(rightPlayer!.name) attacked, \(leftPlayer!.name) lost \(attackAmount) hp!")
+        screen.showLeftPlayerHp(leftPlayer!.hp)
+        if !leftPlayer!.isAlive {
+            game = .ENDGAME
+            screen.hideLeftPlayer()
+            screen.shout("\(rightPlayer!.name) wins!!!")
+        }
+        screen.disableRightPlayer(3)
     }
     
-    func endGame() {
-        //make loser disappear
-        //display winner text and replay button
-    }
-    
-    func reStartGame(){
-        //show player 1 screen (still contains player 1's name)
+    func restartGame(){
+        screen.resetGame(leftPlayer!.name,rightPlayerName: rightPlayer!.name)
+        leftPlayer = nil
+        rightPlayer = nil
     }
 }
