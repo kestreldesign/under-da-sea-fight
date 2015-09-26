@@ -12,6 +12,7 @@
 		277A6DC01BB48FB500697D5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277A6DBE1BB48FB500697D5F /* Main.storyboard */; };
 		277A6DC21BB48FB500697D5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277A6DC11BB48FB500697D5F /* Assets.xcassets */; };
 		277A6DC51BB48FB500697D5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277A6DC31BB48FB500697D5F /* LaunchScreen.storyboard */; };
+		27D87BFE1BB5AC2D00C74E42 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D87BFD1BB5AC2D00C74E42 /* GameController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		277A6DC11BB48FB500697D5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		277A6DC41BB48FB500697D5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		277A6DC61BB48FB500697D5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27D87BFD1BB5AC2D00C74E42 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				277A6DC11BB48FB500697D5F /* Assets.xcassets */,
 				277A6DC31BB48FB500697D5F /* LaunchScreen.storyboard */,
 				277A6DC61BB48FB500697D5F /* Info.plist */,
+				27D87BFD1BB5AC2D00C74E42 /* GameController.swift */,
 			);
 			path = UnderDaSeaFight;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				277A6DBD1BB48FB500697D5F /* ViewController.swift in Sources */,
+				27D87BFE1BB5AC2D00C74E42 /* GameController.swift in Sources */,
 				277A6DBB1BB48FB500697D5F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +290,7 @@
 				277A6DCB1BB48FB500697D5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
