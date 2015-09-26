@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     //player input option screen
     @IBOutlet weak var playerInputBackground: UIImageView!
@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightPlayerCritter: UIImageView!
     @IBOutlet weak var leftAttackButton: UIButton!
     @IBOutlet weak var rightAttackButton: UIButton!
+    @IBOutlet weak var restartButton: UIButton!
     
     var game: GameController!
     var timer = NSTimer()
@@ -35,11 +36,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         wipe()
         shout("")
-        playerInputTextField.placeholder = "player 1's name"
-        playerInputTextField.placeholder = "player 2's name"
+        restartButton.hidden = true
         game = GameController.init(screen: self)
+        initialiseNameTextField()
     }
-
+    func initialiseNameTextField(){
+        playerInputTextField.delegate = self
+        
+    }
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{
+        if (textField.text!.characters.count >= 10 && range.length == 0) {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
     @IBAction func playerChoseSeahorse(sender: AnyObject) {
         game.playerChoseACritter(playerInputTextField.text, critter: GameController.CritterType.SEAHORSE)
     }
@@ -63,7 +76,7 @@ class ViewController: UIViewController {
     }
     func shout(text: String){
         middleOfScreenLabel.text = text
-        //show restart button
+        restartButton.hidden = false
     }
     func wipe(){
         bottomOfScreenLabel.text = ""
@@ -94,12 +107,14 @@ class ViewController: UIViewController {
         rightAttackButton.enabled = true
     }
     func showPlayer1Screen(){
+        playerInputTextField.placeholder = "player 1's name"
         seahorseOptionImage.setImage(UIImage(named: "seahorse_left.png"), forState: .Normal)
         crabOptionImage.setImage(UIImage(named: "crab_left.png"), forState: .Normal)
         playerInputBackground.hidden = false;
         playerInputStackView.hidden = false;
     }
     func showPlayer2Screen(){
+        playerInputTextField.placeholder = "player 2's name"
         if reset {
             playerInputTextField.text = resetPlayer2sName
         } else {
@@ -131,10 +146,13 @@ class ViewController: UIViewController {
         reset = true
         wipe()
         shout("")
+        restartButton.hidden = true
         playerInputTextField.text = leftPlayerName
         resetPlayer2sName = rightPlayerName
         showLeftPlayerHp(100)
         showLeftPlayerHp(100)
+        leftPlayerCritter.hidden = false
+        rightPlayerCritter.hidden = false
         showPlayer1Screen()
     }
 }

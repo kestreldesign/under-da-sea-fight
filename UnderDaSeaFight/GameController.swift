@@ -30,6 +30,10 @@ class GameController {
     }
     
     func playerChoseACritter(var nameOfPlayer: String?, critter: CritterType){
+        if nameOfPlayer?.characters.count >= 10 {
+            let substringRange = nameOfPlayer!.startIndex..<nameOfPlayer!.startIndex.advancedBy(10)
+            nameOfPlayer = nameOfPlayer!.substringWithRange(substringRange)
+        }
         if game == .LEFTPLAYER {
             if nameOfPlayer == "" {
                 nameOfPlayer = "Player 1"
@@ -60,7 +64,7 @@ class GameController {
             screen.hideRightPlayer()
             screen.shout("\(leftPlayer!.name) wins!!!")
         }
-        screen.disableLeftPlayer(3)
+        screen.disableLeftPlayer(Int(arc4random_uniform(3)))
     }
     
     func rightPlayerAttacked(){
@@ -73,12 +77,13 @@ class GameController {
             screen.hideLeftPlayer()
             screen.shout("\(rightPlayer!.name) wins!!!")
         }
-        screen.disableRightPlayer(3)
+        screen.disableRightPlayer(Int(arc4random_uniform(3)))
     }
     
     func restartGame(){
         screen.resetGame(leftPlayer!.name,rightPlayerName: rightPlayer!.name)
         leftPlayer = nil
         rightPlayer = nil
+        game = .LEFTPLAYER
     }
 }

@@ -75,6 +75,17 @@
                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="42"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmc-VB-cf1">
+                                <rect key="frame" x="232" y="236" width="136" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="qw4-7i-c6Y"/>
+                                    <constraint firstAttribute="width" constant="136" id="s4e-X5-umD"/>
+                                </constraints>
+                                <state key="normal" image="restart"/>
+                                <connections>
+                                    <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Omc-Z9-yZ2"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="boo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3b-B9-e5C">
                                 <rect key="frame" x="62" y="555" width="476" height="21"/>
                                 <constraints>
@@ -216,10 +227,12 @@
                             <constraint firstAttribute="bottom" secondItem="Ynp-A1-gCK" secondAttribute="bottom" id="AKl-Qa-NEm"/>
                             <constraint firstItem="Uue-Qy-D81" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C9j-E1-d0f"/>
                             <constraint firstItem="U8a-je-q1x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CgN-Wo-a5h"/>
+                            <constraint firstItem="Pmc-VB-cf1" firstAttribute="top" secondItem="Ie4-nv-tCa" secondAttribute="bottom" constant="8" id="GLF-4d-Lc6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LUE-Jm-F4M" secondAttribute="bottom" id="IL4-B7-gKB"/>
                             <constraint firstAttribute="trailing" secondItem="Ynp-A1-gCK" secondAttribute="trailing" id="NvU-pe-bCs"/>
                             <constraint firstAttribute="trailing" secondItem="uA4-ZU-BCy" secondAttribute="trailing" id="O7t-gG-dFJ"/>
                             <constraint firstItem="Ynp-A1-gCK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P6e-0n-XxZ"/>
+                            <constraint firstItem="Pmc-VB-cf1" firstAttribute="centerY" secondItem="Ie4-nv-tCa" secondAttribute="centerY" id="PO6-W1-bGk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LUE-Jm-F4M" secondAttribute="bottom" id="QRy-3h-f5h"/>
                             <constraint firstItem="I3b-B9-e5C" firstAttribute="height" secondItem="KpH-2Y-ufJ" secondAttribute="height" id="Rn1-vy-dws"/>
                             <constraint firstItem="I3b-B9-e5C" firstAttribute="top" secondItem="M2H-ej-J8h" secondAttribute="top" id="So7-0r-xNu"/>
@@ -232,6 +245,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Uue-Qy-D81" secondAttribute="bottom" constant="18" id="YBB-ME-iXa"/>
                             <constraint firstItem="Ynp-A1-gCK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yas-Sj-ORI"/>
                             <constraint firstAttribute="centerY" secondItem="Ie4-nv-tCa" secondAttribute="centerY" constant="100" id="a5P-8Z-OgN"/>
+                            <constraint firstItem="Pmc-VB-cf1" firstAttribute="centerX" secondItem="Ie4-nv-tCa" secondAttribute="centerX" id="bOs-SH-eHP"/>
                             <constraint firstItem="UtH-xg-sxt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="c4x-QE-xyM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UtH-xg-sxt" secondAttribute="bottom" constant="55" id="dK4-Vs-L6g"/>
                             <constraint firstItem="6yK-eV-Wpb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gQ9-0w-Z81"/>
@@ -247,11 +261,8 @@
                             <constraint firstAttribute="trailing" secondItem="6yK-eV-Wpb" secondAttribute="trailing" id="wy2-Ee-D7H"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Ynp-A1-gCK"/>
-                                <exclude reference="6yK-eV-Wpb"/>
-                            </mask>
                             <mask key="constraints">
+                                <exclude reference="PO6-W1-bGk"/>
                                 <exclude reference="5qg-dA-Dhv"/>
                                 <exclude reference="QRy-3h-f5h"/>
                             </mask>
@@ -267,6 +278,7 @@
                         <outlet property="playerInputBackground" destination="Ynp-A1-gCK" id="Ehm-BA-bSz"/>
                         <outlet property="playerInputStackView" destination="6yK-eV-Wpb" id="TRf-BI-UfD"/>
                         <outlet property="playerInputTextField" destination="opb-49-ovg" id="BI9-ho-ZI4"/>
+                        <outlet property="restartButton" destination="Pmc-VB-cf1" id="luG-26-vov"/>
                         <outlet property="rightAttackButton" destination="U8a-je-q1x" id="FXr-Fx-tjE"/>
                         <outlet property="rightPlayerCritter" destination="UP3-Dl-ekF" id="jFc-Jq-B8A"/>
                         <outlet property="rightPlayerScore" destination="M2H-ej-J8h" id="6LP-36-JfR"/>
@@ -284,6 +296,7 @@
         <image name="firstscreenbg" width="1920" height="1109"/>
         <image name="labelbackground" width="1465" height="116"/>
         <image name="leftcorner" width="415" height="464"/>
+        <image name="restart" width="550" height="321"/>
         <image name="rightcorner" width="415" height="464"/>
         <image name="rocks" width="2732" height="300"/>
         <image name="seahorse_left" width="697" height="826"/>
