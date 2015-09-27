@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var leftAttackButton: UIButton!
     @IBOutlet weak var rightAttackButton: UIButton!
     @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var infoPlusButton: UIButton!
     
     //variables
     var game: GameController!
@@ -43,6 +44,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         wipe()
         shout("")
         restartButton.hidden = true
+        infoPlusButton.hidden = true
         playerInputTextField.delegate = self
         initialiseSounds()
         game = GameController.init(screen: self)
@@ -183,11 +185,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func restartGame(sender: UIButton) {
         game.restartGame()
     }
+    @IBAction func infoPlussPressed(sender: AnyObject) {
+        //show show credit screen and in app purchase for more critter types
+    }
     
     //feedback
     func shout(text: String){
         middleOfScreenLabel.text = text
         restartButton.hidden = false
+        infoPlusButton.hidden = false
         disableAttackButtons()
     }
     func wipe(){
@@ -244,6 +250,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         wipe()
         shout("")
         restartButton.hidden = true
+        infoPlusButton.hidden = true
         playerInputTextField.text = leftPlayerName
         resetPlayer2sName = rightPlayerName
         showLeftPlayerHp(100)

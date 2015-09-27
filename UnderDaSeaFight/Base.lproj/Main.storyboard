@@ -86,6 +86,17 @@
                                     <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Omc-Z9-yZ2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEj-P8-Ota">
+                                <rect key="frame" x="272" y="316" width="57" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="5Fk-7a-4Co"/>
+                                    <constraint firstAttribute="height" constant="56" id="Pye-ZT-6f3"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="infoplus"/>
+                                <connections>
+                                    <action selector="infoPlussPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QiG-W8-xLA"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 attacked, Player 2 lost 25 hp!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3b-B9-e5C">
                                 <rect key="frame" x="62" y="555" width="476" height="21"/>
                                 <constraints>
@@ -227,8 +238,10 @@
                             <constraint firstAttribute="bottom" secondItem="Ynp-A1-gCK" secondAttribute="bottom" id="AKl-Qa-NEm"/>
                             <constraint firstItem="Uue-Qy-D81" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C9j-E1-d0f"/>
                             <constraint firstItem="U8a-je-q1x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CgN-Wo-a5h"/>
+                            <constraint firstItem="SEj-P8-Ota" firstAttribute="centerY" secondItem="Pmc-VB-cf1" secondAttribute="centerY" id="D28-Tu-8gp"/>
                             <constraint firstItem="Pmc-VB-cf1" firstAttribute="top" secondItem="Ie4-nv-tCa" secondAttribute="bottom" constant="8" id="GLF-4d-Lc6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LUE-Jm-F4M" secondAttribute="bottom" id="IL4-B7-gKB"/>
+                            <constraint firstItem="SEj-P8-Ota" firstAttribute="top" secondItem="Pmc-VB-cf1" secondAttribute="bottom" constant="8" id="N1i-i6-bhV"/>
                             <constraint firstAttribute="trailing" secondItem="Ynp-A1-gCK" secondAttribute="trailing" id="NvU-pe-bCs"/>
                             <constraint firstAttribute="trailing" secondItem="uA4-ZU-BCy" secondAttribute="trailing" id="O7t-gG-dFJ"/>
                             <constraint firstItem="Ynp-A1-gCK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P6e-0n-XxZ"/>
@@ -259,10 +272,12 @@
                             <constraint firstItem="I3b-B9-e5C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oMi-Ob-xzH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uA4-ZU-BCy" secondAttribute="bottom" id="u9Z-o4-PA0"/>
                             <constraint firstAttribute="trailing" secondItem="6yK-eV-Wpb" secondAttribute="trailing" id="wy2-Ee-D7H"/>
+                            <constraint firstItem="SEj-P8-Ota" firstAttribute="centerX" secondItem="Pmc-VB-cf1" secondAttribute="centerX" id="z25-FT-X5s"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="PO6-W1-bGk"/>
+                                <exclude reference="D28-Tu-8gp"/>
                                 <exclude reference="5qg-dA-Dhv"/>
                                 <exclude reference="QRy-3h-f5h"/>
                             </mask>
@@ -271,6 +286,7 @@
                     <connections>
                         <outlet property="bottomOfScreenLabel" destination="I3b-B9-e5C" id="wud-Zr-4SA"/>
                         <outlet property="crabOptionImage" destination="MvS-JF-KKJ" id="gI3-gS-bIc"/>
+                        <outlet property="infoPlusButton" destination="SEj-P8-Ota" id="Bd9-mj-2b4"/>
                         <outlet property="leftAttackButton" destination="VEZ-km-Y4V" id="T8h-g2-6Fb"/>
                         <outlet property="leftPlayerCritter" destination="UtH-xg-sxt" id="Krh-5Y-VyQ"/>
                         <outlet property="leftPlayerScore" destination="KpH-2Y-ufJ" id="dB6-pX-hxB"/>
@@ -294,6 +310,7 @@
         <image name="background" width="2208" height="1242"/>
         <image name="crab_left" width="697" height="826"/>
         <image name="firstscreenbg" width="1920" height="1109"/>
+        <image name="infoplus" width="227" height="223"/>
         <image name="labelbackground" width="1465" height="116"/>
         <image name="leftcorner" width="415" height="464"/>
         <image name="restart" width="550" height="321"/>
