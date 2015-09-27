@@ -12,6 +12,12 @@
 		277A6DC01BB48FB500697D5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277A6DBE1BB48FB500697D5F /* Main.storyboard */; };
 		277A6DC21BB48FB500697D5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277A6DC11BB48FB500697D5F /* Assets.xcassets */; };
 		277A6DC51BB48FB500697D5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277A6DC31BB48FB500697D5F /* LaunchScreen.storyboard */; };
+		27CA22111BB762BF00ADD5DB /* bubble1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27CA220B1BB762BF00ADD5DB /* bubble1.mp3 */; settings = {ASSET_TAGS = (); }; };
+		27CA22121BB762BF00ADD5DB /* bubble2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27CA220C1BB762BF00ADD5DB /* bubble2.mp3 */; settings = {ASSET_TAGS = (); }; };
+		27CA22131BB762BF00ADD5DB /* bubble3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27CA220D1BB762BF00ADD5DB /* bubble3.mp3 */; settings = {ASSET_TAGS = (); }; };
+		27CA22141BB762BF00ADD5DB /* crab_die.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27CA220E1BB762BF00ADD5DB /* crab_die.mp3 */; settings = {ASSET_TAGS = (); }; };
+		27CA22151BB762BF00ADD5DB /* seahorse_die.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27CA220F1BB762BF00ADD5DB /* seahorse_die.mp3 */; settings = {ASSET_TAGS = (); }; };
+		27CA22161BB762BF00ADD5DB /* water_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27CA22101BB762BF00ADD5DB /* water_background.mp3 */; settings = {ASSET_TAGS = (); }; };
 		27D87BFE1BB5AC2D00C74E42 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D87BFD1BB5AC2D00C74E42 /* GameController.swift */; settings = {ASSET_TAGS = (); }; };
 		27D87C001BB726C100C74E42 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D87BFF1BB726C100C74E42 /* Player.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -24,6 +30,12 @@
 		277A6DC11BB48FB500697D5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		277A6DC41BB48FB500697D5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		277A6DC61BB48FB500697D5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27CA220B1BB762BF00ADD5DB /* bubble1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble1.mp3; sourceTree = "<group>"; };
+		27CA220C1BB762BF00ADD5DB /* bubble2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble2.mp3; sourceTree = "<group>"; };
+		27CA220D1BB762BF00ADD5DB /* bubble3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble3.mp3; sourceTree = "<group>"; };
+		27CA220E1BB762BF00ADD5DB /* crab_die.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crab_die.mp3; sourceTree = "<group>"; };
+		27CA220F1BB762BF00ADD5DB /* seahorse_die.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = seahorse_die.mp3; sourceTree = "<group>"; };
+		27CA22101BB762BF00ADD5DB /* water_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = water_background.mp3; sourceTree = "<group>"; };
 		27D87BFD1BB5AC2D00C74E42 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		27D87BFF1BB726C100C74E42 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +78,12 @@
 				277A6DC61BB48FB500697D5F /* Info.plist */,
 				27D87BFD1BB5AC2D00C74E42 /* GameController.swift */,
 				27D87BFF1BB726C100C74E42 /* Player.swift */,
+				27CA220B1BB762BF00ADD5DB /* bubble1.mp3 */,
+				27CA220C1BB762BF00ADD5DB /* bubble2.mp3 */,
+				27CA220D1BB762BF00ADD5DB /* bubble3.mp3 */,
+				27CA220E1BB762BF00ADD5DB /* crab_die.mp3 */,
+				27CA220F1BB762BF00ADD5DB /* seahorse_die.mp3 */,
+				27CA22101BB762BF00ADD5DB /* water_background.mp3 */,
 			);
 			path = UnderDaSeaFight;
 			sourceTree = "<group>";
@@ -129,7 +147,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				277A6DC51BB48FB500697D5F /* LaunchScreen.storyboard in Resources */,
+				27CA22151BB762BF00ADD5DB /* seahorse_die.mp3 in Resources */,
 				277A6DC21BB48FB500697D5F /* Assets.xcassets in Resources */,
+				27CA22131BB762BF00ADD5DB /* bubble3.mp3 in Resources */,
+				27CA22111BB762BF00ADD5DB /* bubble1.mp3 in Resources */,
+				27CA22161BB762BF00ADD5DB /* water_background.mp3 in Resources */,
+				27CA22141BB762BF00ADD5DB /* crab_die.mp3 in Resources */,
+				27CA22121BB762BF00ADD5DB /* bubble2.mp3 in Resources */,
 				277A6DC01BB48FB500697D5F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

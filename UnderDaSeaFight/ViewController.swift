@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,6 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var seahorseOptionImage: UIButton!
     @IBOutlet weak var crabOptionImage: UIButton!
     
+    //main play screen
     @IBOutlet weak var bottomOfScreenLabel: UILabel!
     @IBOutlet weak var middleOfScreenLabel: UILabel!
     @IBOutlet weak var leftPlayerScore: UILabel!
@@ -27,23 +29,94 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rightAttackButton: UIButton!
     @IBOutlet weak var restartButton: UIButton!
     
+    //variables
     var game: GameController!
     var timer = NSTimer()
     var reset = false
     var resetPlayer2sName = ""
+    var bubbleSound: AVAudioPlayer!
+    var dieSound: AVAudioPlayer!
+    var backgroundSound: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         wipe()
         shout("")
         restartButton.hidden = true
-        game = GameController.init(screen: self)
-        initialiseNameTextField()
-    }
-    func initialiseNameTextField(){
         playerInputTextField.delegate = self
-        
+        initialiseSounds()
+        game = GameController.init(screen: self)
     }
+    
+    //Sounds
+    func initialiseSounds(){
+        var path = NSBundle.mainBundle().pathForResource("bubble1", ofType: "mp3")
+        var soundUrl = NSURL(fileURLWithPath: path!)
+        do {
+            try bubbleSound = AVAudioPlayer(contentsOfURL: soundUrl)
+            bubbleSound.prepareToPlay()
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        path = NSBundle.mainBundle().pathForResource("crab_die", ofType: "mp3")
+        soundUrl = NSURL(fileURLWithPath: path!)
+        do {
+            try dieSound = AVAudioPlayer(contentsOfURL: soundUrl)
+            dieSound.prepareToPlay()
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        path = NSBundle.mainBundle().pathForResource("water_background", ofType: "mp3")
+        soundUrl = NSURL(fileURLWithPath: path!)
+        do {
+            try backgroundSound = AVAudioPlayer(contentsOfURL: soundUrl)
+            backgroundSound.prepareToPlay()
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        backgroundSound.numberOfLoops = -1
+        backgroundSound.volume = 0.9
+        backgroundSound.play()
+    }
+    func playBubble(){
+        if bubbleSound.playing {
+            bubbleSound.stop()
+        }
+        let path = NSBundle.mainBundle().pathForResource("bubble\(Int(arc4random_uniform(3)+1))", ofType: "mp3")
+        let soundUrl = NSURL(fileURLWithPath: path!)
+        do {
+            try bubbleSound = AVAudioPlayer(contentsOfURL: soundUrl)
+            bubbleSound.prepareToPlay()
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        bubbleSound.play()
+    }
+    func playDeathSound(type: GameController.CritterType){
+        if dieSound.playing {
+            dieSound.stop()
+        }
+        if bubbleSound.playing {
+            bubbleSound.stop()
+        }
+        var typeToStr = ""
+        if type == .CRAB {
+            typeToStr = "crab_die"
+        } else if type == .SEAHORSE {
+            typeToStr = "seahorse_die"
+        }
+        let path = NSBundle.mainBundle().pathForResource("\(typeToStr)", ofType: "mp3")
+        let soundUrl = NSURL(fileURLWithPath: path!)
+        do {
+            try dieSound = AVAudioPlayer(contentsOfURL: soundUrl)
+            dieSound.prepareToPlay()
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        dieSound.play()
+    }
+    
+    //player entry
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{
         if (textField.text!.characters.count >= 10 && range.length == 0) {
             return false
@@ -52,34 +125,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return true
         }
     }
-    
+    func checkTextLength(){
+    if playerInputTextField.text!.characters.count >= 10 {
+        let substringRange = playerInputTextField.text!.startIndex..<playerInputTextField.text!.startIndex.advancedBy(10)
+        playerInputTextField.text = playerInputTextField.text!.substringWithRange(substringRange)
+        }
+    }
     @IBAction func playerChoseSeahorse(sender: AnyObject) {
+        checkTextLength()
         game.playerChoseACritter(playerInputTextField.text, critter: GameController.CritterType.SEAHORSE)
     }
     @IBAction func playerChoseCrab(sender: AnyObject) {
+        checkTextLength()
         game.playerChoseACritter(playerInputTextField.text, critter: GameController.CritterType.CRAB)
     }
-    @IBAction func rightPlayerAttacked(sender: AnyObject) {
-        game.rightPlayerAttacked()
-    }
+    
+    
+    //game play
     @IBAction func leftPlayerAttacked(sender: AnyObject) {
+        playBubble()
         game.leftPlayerAttacked()
     }
-    @IBAction func restartGame(sender: UIButton) {
-        game.restartGame()
-    }
-    func hideLeftPlayer(){
-        leftPlayerCritter.hidden = true
-    }
-    func hideRightPlayer(){
-        rightPlayerCritter.hidden = true
-    }
-    func shout(text: String){
-        middleOfScreenLabel.text = text
-        restartButton.hidden = false
-    }
-    func wipe(){
-        bottomOfScreenLabel.text = ""
+    @IBAction func rightPlayerAttacked(sender: AnyObject) {
+        playBubble()
+        game.rightPlayerAttacked()
     }
     func showLeftPlayerHp(health: Int){
         leftPlayerScore.text = "\(health)"
@@ -87,45 +156,73 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func showRightPlayerHp(health: Int){
         rightPlayerScore.text = "\(health)"
     }
+    func disableLeftPlayer(time: Int){
+        leftAttackButton.enabled = false
+        NSTimer.scheduledTimerWithTimeInterval(Double(time), target: self, selector: "enableAttackButtons", userInfo: nil, repeats: false)
+    }
+    func disableRightPlayer(time: Int){
+        rightAttackButton.enabled = false
+        NSTimer.scheduledTimerWithTimeInterval(Double(time), target: self, selector: "enableAttackButtons", userInfo: nil, repeats: false)
+    }
+    func killLeftPlayer(type: GameController.CritterType){
+        leftPlayerCritter.hidden = true
+        playDeathSound(type)
+    }
+    func killRightPlayer(type: GameController.CritterType){
+        rightPlayerCritter.hidden = true
+        playDeathSound(type)
+    }
+    func enableAttackButtons(){
+        leftAttackButton.enabled = true
+        rightAttackButton.enabled = true
+    }
+    func disableAttackButtons(){
+        leftAttackButton.enabled = false
+        rightAttackButton.enabled = false
+    }
+    @IBAction func restartGame(sender: UIButton) {
+        game.restartGame()
+    }
+    
+    //feedback
+    func shout(text: String){
+        middleOfScreenLabel.text = text
+        restartButton.hidden = false
+        disableAttackButtons()
+    }
+    func wipe(){
+        bottomOfScreenLabel.text = ""
+    }
     func print(text: String){
         timer.invalidate() //stop previous wipes
         bottomOfScreenLabel.text = text
         timer = NSTimer.scheduledTimerWithTimeInterval(3, target:self, selector: Selector("wipe"), userInfo: nil, repeats: false)
     }
-    func disableLeftPlayer(time: Int){
-        leftAttackButton.enabled = false
-        NSTimer.scheduledTimerWithTimeInterval(Double(time), target: self, selector: "enableLeftAttackButton", userInfo: nil, repeats: false)
-    }
-    func enableLeftAttackButton(){
-        leftAttackButton.enabled = true
-    }
-    func disableRightPlayer(time: Int){
-        rightAttackButton.enabled = false
-        NSTimer.scheduledTimerWithTimeInterval(Double(time), target: self, selector: "enableRightAttackButton", userInfo: nil, repeats: false)
-    }
-    func enableRightAttackButton(){
-        rightAttackButton.enabled = true
-    }
+    
+    //screen management
     func showPlayer1Screen(){
         playerInputTextField.placeholder = "player 1's name"
         seahorseOptionImage.setImage(UIImage(named: "seahorse_left.png"), forState: .Normal)
         crabOptionImage.setImage(UIImage(named: "crab_left.png"), forState: .Normal)
+        
         playerInputBackground.hidden = false;
         playerInputStackView.hidden = false;
     }
     func showPlayer2Screen(){
         playerInputTextField.placeholder = "player 2's name"
+        seahorseOptionImage.setImage(UIImage(named: "seahorse_right.png"), forState: .Normal)
+        crabOptionImage.setImage(UIImage(named: "crab_right.png"), forState: .Normal)
         if reset {
             playerInputTextField.text = resetPlayer2sName
         } else {
             playerInputTextField.text = ""
         }
-        seahorseOptionImage.setImage(UIImage(named: "seahorse_right.png"), forState: .Normal)
-        crabOptionImage.setImage(UIImage(named: "crab_right.png"), forState: .Normal)
     }
     func showMainGameScreen(leftCritter: GameController.CritterType, rightCritter: GameController.CritterType){
-        playerInputBackground.hidden = true;
-        playerInputStackView.hidden = true;
+        playerInputBackground.hidden = true
+        playerInputStackView.hidden = true
+        leftAttackButton.enabled = true
+        rightAttackButton.enabled = true
         
         var leftCritterStr = ""
         var rightCritterStr = ""
@@ -150,7 +247,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         playerInputTextField.text = leftPlayerName
         resetPlayer2sName = rightPlayerName
         showLeftPlayerHp(100)
-        showLeftPlayerHp(100)
+        showRightPlayerHp(100)
         leftPlayerCritter.hidden = false
         rightPlayerCritter.hidden = false
         showPlayer1Screen()
